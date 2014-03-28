@@ -94,7 +94,8 @@
     else if (target && [target respondsToSelector:successAction]) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        [target performSelector:successAction withObject:[NSNumber numberWithInt:self.selectedIndex] withObject:origin];
+        UIPickerView * picker = (UIPickerView *) self.pickerView;
+        [target performSelector:successAction withObject:[NSNumber numberWithInteger:[picker selectedRowInComponent:0]] withObject:origin];
 #pragma clang diagnostic pop
         return;
     }
