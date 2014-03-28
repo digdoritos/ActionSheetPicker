@@ -194,6 +194,9 @@
 
 - (UIToolbar *)createPickerToolbarWithTitle:(NSString *)title  {
     CGRect frame = CGRectMake(0, 0, self.viewSize.width, 44);
+    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
+        frame = CGRectMake(10, 0, self.viewSize.width - 20, 44);
+    }
     UIToolbar *pickerToolbar = [[UIToolbar alloc] initWithFrame:frame];
     pickerToolbar.barStyle = UIBarStyleBlackOpaque;
     NSMutableArray *barItems = [[NSMutableArray alloc] init];
@@ -241,6 +244,12 @@
 #pragma mark - Utilities and Accessors
 
 - (CGSize)viewSize {
+    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
+        if (![self isViewPortrait])
+            return CGSizeMake(480, 320);
+        return CGSizeMake(340, 480);
+    }
+    
     if (![self isViewPortrait])
         return CGSizeMake(480, 320);
     return CGSizeMake(320, 480);
