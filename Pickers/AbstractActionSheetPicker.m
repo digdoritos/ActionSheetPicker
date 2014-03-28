@@ -28,6 +28,13 @@
 #import "AbstractActionSheetPicker.h"
 #import <objc/message.h>
 
+// Support iOS 5
+#ifdef __IPHONE_6_0
+#define TEXT_ALIGN_CENTER       NSTextAlignmentCenter
+#else
+#define TEXT_ALIGN_CENTER       UITextAlignmentCenter
+#endif
+
 @interface AbstractActionSheetPicker()
 
 @property (nonatomic, strong) UIBarButtonItem *barButtonItem;
@@ -228,7 +235,7 @@
 
 - (UIBarButtonItem *)createToolbarLabelWithTitle:(NSString *)aTitle {
     UILabel *toolBarItemlabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 180,30)];
-    [toolBarItemlabel setTextAlignment:UITextAlignmentCenter];    
+    [toolBarItemlabel setTextAlignment:TEXT_ALIGN_CENTER];    
     [toolBarItemlabel setTextColor:[UIColor whiteColor]];    
     [toolBarItemlabel setFont:[UIFont boldSystemFontOfSize:16]];    
     [toolBarItemlabel setBackgroundColor:[UIColor clearColor]];    
