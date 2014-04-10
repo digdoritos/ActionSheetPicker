@@ -91,7 +91,7 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSLog(@"Row %i selected in component %i", row, component);
+    NSLog(@"Row %ld selected in component %ld", (long)row, (long)component);
     switch (component) {
         case 0:
             selectedKey = [notesToDisplayForKey objectAtIndex:row];
